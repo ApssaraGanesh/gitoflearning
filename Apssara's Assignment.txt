@@ -1,0 +1,256 @@
+
+1)
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+
+/*Write a program using  ArrayList. Implement the following
+Check the size of the ArrayList(use size())
+Check if the ArrayList is empty or not(use isEmpty())
+Find the index of the elements by using get()
+Replace certain index value with set()
+Append a list of elements to previous list (addAll())
+Display the list of elements which are anagrams
+
+
+Ex:  [C,C++,Java,Python]
+
+Output:
+	Size of the ArrayList : 4
+	ArrayList isEmpty : False
+	ArrayList at index 0 : C  (likewise)
+	 List after changes : [C,C++,Java,Python3](Replace Python with Python3)
+	After appending the List  : [C,C++,Java,Python3 ,R,MySQL,save,vase]
+	Anagrams in the List : [save,vase]*/
+public class Program1 {
+  
+	public static void main(String[] args) {
+		Program1 pg= new Program1();
+		pg.listMethod();
+		pg.linkedImplementation();
+		pg.setMethod();
+	}
+	
+	
+	public void linkedImplementation() {
+		LinkedList<String> ll = new LinkedList<String>();
+		ll.add("apple");
+		ll.add("orange");
+		ll.add("grapes");
+		System.out.println(ll.size());
+		System.out.println(ll);
+		  System.out.println(ll.lastIndexOf(ll));
+		  System.out.println(ll.peekFirst()); 
+		
+		
+		  System.out.println(ll.peekLast());
+		  System.out.println(ll.pollFirst());
+		  System.out.println(ll.pollLast());
+		  System.out.println(ll.size());
+		  List<String>lb=new ArrayList<String>();
+		  lb.add("papaya");
+		  lb.add("guava");
+		  ll.addAll(lb);
+		  System.out.println(ll);
+		  
+		  
+		  
+	}
+	public void listMethod() {
+		
+		List<String>ls=new ArrayList<String>();
+		ls.add("C");
+		ls.add("C++");
+		ls.add("Java");
+		ls.add("Python");
+		System.out.println(ls.size());
+		System.out.println(ls.isEmpty());
+		System.out.println(ls.get(0));
+		ls.set(3, "python3");
+		System.out.println(ls);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		ArrayList<String>newArray=new ArrayList<String>();
+		newArray.add("R");
+		newArray.add("MySQL");
+		newArray.add("save");
+		newArray.add("vase");
+		ls.addAll(newArray);
+		System.out.println(ls);
+		List<String> anagrams = new ArrayList<>();
+		for(int i=0; i<ls.size(); i++) {
+			String s =ls.get(i).toLowerCase();
+			String s1[] = s.split("");
+			Arrays.sort(s1);
+			String s2="";
+			for(int j =0; j<s1.length; j++) {
+				s2 += s1[j];
+			}
+			for(int k=i+1; k<ls.size(); k++ ) {
+				String s3 = ls.get(k).toLowerCase();
+				String s4[] =s3.split("");
+				Arrays.sort(s4);
+				String s5="";
+				for(int l=0; l<s4.length; l++) {
+					s5+=s4[l];
+				}
+				if(s2.equals(s5)) {
+					
+					anagrams.add(ls.get(i));
+					anagrams.add(ls.get(k));
+				}
+			}
+			
+		}
+		System.out.println(anagrams);
+	}
+		
+		
+		
+		
+		
+	
+	public void setMethod() {
+		 HashSet<String> h1 = new HashSet<String>();
+	      	h1.add("apple");
+	      	h1.add("banana");
+	      	h1.add("orange");
+	      	h1.add("tomato");
+	       
+	        
+	        HashSet<String>h2 = new HashSet<String>();
+	        h2.add("apple");
+	        h2.add("grapes");
+	        h2.add("banana");
+	        h2.add("papaya");
+	       	        
+	        h1.retainAll(h2);
+	        
+	        System.out.println(h1);
+	}
+}
+
+
+2)
+
+public class Movies
+{
+	String name;
+
+	String director_name;
+
+	int duration;
+
+	int  releasedYear;
+	public Movies() {}
+
+	public Movies(String name, String director_name, int duration, int releasedYear) {
+		super();
+		this.name = name;
+		this.director_name = director_name;
+		this.duration = duration;
+		this.releasedYear = releasedYear;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDirector_name() {
+		return director_name;
+	}
+
+	public void setDirector_name(String director_name) {
+		this.director_name = director_name;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public int getReleasedYear() {
+		return releasedYear;
+	}
+
+	public void setReleasedYear(int releasedYear) {
+		this.releasedYear = releasedYear;
+	}
+	
+	
+}
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Moviemain {
+    @SuppressWarnings("rawtypes")
+	public static void main(String[] args) {
+    	ArrayList<Movies> mov = new ArrayList<Movies>();
+		Movies m1 = new Movies("Mechanic: Resurrection","Dennis Gansel", 98, 2016);
+		Movies m2 = new Movies("Bajirao Mastani","sanjay leela bhansali", 118, 2021);
+		Movies m3 = new Movies("3 Idiots","Rajkumar Hirani", 171, 2009);
+		Movies m4 = new Movies("Sanju","Rajkumar Hirani", 155, 2018);
+		Movies m5 = new Movies("sivaji","Shankar", 106, 2016);
+		Movies m6 = new Movies("Muthu","Ravi kumar", 98, 2016);
+		Movies m7 = new Movies("Vikram","Lokesh kanagaraj", 118, 2021);
+		Movies m8 = new Movies("pk","Rajkumar Hirani", 171, 2009);
+		Movies m9 = new Movies("kaidhi","Lokesh kanagaraj", 155, 2018);
+		Movies m10 = new Movies("Anniyan","Shankar", 106, 2016);
+
+		
+		mov.add(m1);
+		mov.add(m2);
+		mov.add(m3);
+		mov.add(m4);
+		mov.add(m5);
+		mov.add(m6);
+		mov.add(m7);
+		mov.add(m8);
+		mov.add(m9);
+		mov.add(m10);
+		
+Map<String, List<String>> Directors = new HashMap<String,List<String>>();
+		
+		for(Movies m: mov) {
+			List<String> allMoviesName = new ArrayList<String>();
+			allMoviesName.add(m.getName());
+			if(Directors.containsKey(m.getDirector_name()))
+				Directors.get(m.getDirector_name()).add(m.getName());
+			else
+				Directors.put(m.getDirector_name(),allMoviesName);
+		}
+		
+		for(Map.Entry m: Directors.entrySet()) {
+			System.out.println(m.getKey()+ ": "+ m.getValue());
+		}
+		
+		
+		
+		
+		
+    }
+}
+
