@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th = "https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Management System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="container">
+<h1>Product Management System</h1>
+<hr>
+<h2>Save Product</h2>
+<form th:action = "@{/saveProduct}" th:object = "${product}",method="POST"></form>
+<input type="text" field = "*{id}" placeholder="Product id" class="form-control mb-4 col-4">
+
+<input type="text" field = "*{sku}" placeholder="sku" class="form-control mb-4 col-4">
+
+<input type="text" field = "*{name}" placeholder="Product name" class="form-control mb-4 col-4">
+
+<input type="text" field = "*{description}" placeholder="Product description" class="form-control mb-4 col-4">
+
+<input type="text" field = "*{unitprice}" placeholder="Product unitprice" class="form-control mb-4 col-4">
+
+
+<input type="text" field = "*{imageurl}" placeholder="Product url" class="form-control mb-4 col-4">
+
+
+<input type="text" field = "*{unitsinstock}" placeholder="Product stock" class="form-control mb-4 col-4">
+
+
+
+<input type="text" field = "*{datecreated}" placeholder="Product datecreated" class="form-control mb-4 col-4">
+
+
+<input type="text" field = "*{lastupdated}" placeholder="Product lastupdated" class="form-control mb-4 col-4">
+
+
+<input type="text" field = "*{categoryid}" placeholder="Product categoryid" class="form-control mb-4 col-4">
+
+<button type="submit" class="btn btn-info col-2">Save Product</button>
+
+
+</form>
+</div>
+</body>
+</html>
