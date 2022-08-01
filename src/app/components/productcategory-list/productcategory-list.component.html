@@ -1,0 +1,15 @@
+<p>appproductcategory-list works!</p>
+<h1>CATEGORY DETAILS</h1>
+<table border="1">
+    <tr>
+        <th>Category id</th>
+        <th>Category Name</th>
+        
+    </tr>
+
+    <tr *ngFor="let emp of productcategorys">
+        <th>{{emp.categoryid}}</th>
+        <th>{{emp.categoryname}}</th>
+        
+    </tr>
+</table>
