@@ -1,44 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductmanagementServiceService} from 'src/app/services/productmanagement-service.service'
-import {Product} from 'src/app/common/product'
-import { ProductCategory } from 'src/app/common/product-category';
-//import{ProductCategory} from 'src/app/common/product-category'
-
+import { Product } from 'src/app/common/product';
+import { ManagementService } from 'src/app/services/management.service';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products: Product[];
-  constructor(private service:ProductmanagementServiceService ) { }
-
+  products : Product[]
+  constructor(private service : ManagementService,
+    private route : Router,
+    private cartservice : CartService) { }
   ngOnInit(): void {
     this.listOfProducts()
   }
+  addToCart(product: Product) {
+    this.cartservice.addToCart(product);
+    window.alert('Your product has been added to the cart!');
+  }
+
   listOfProducts(){
-    this.service.getAllProducts().subscribe((data: Product[]) =>{
-      console.log(data);
-      this.products = data;
-     
+    this.service.getAllProduct().subscribe(data => {
+      this.products = data
     })
   }
-  
-    }
-    interface GetResponseProducts{
-      _embedded :{
-        products : Product[]
-      }
-    
-    
-    }
+  addProduct(){
+    this.route.navigateByUrl("/merchant")
+  }
+  gotoHome(){
+    this.route.navigateByUrl("/")
+  }
 
-    interface GetResponseProductsCategory{
-      _embedded :{
-       productcategorys :ProductCategory[];
-      }
-     
-     }
-    
-
-
+}
