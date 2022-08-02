@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.demo.entity.ProductCategory;
 @RepositoryRestResource(path ="procat")
-@CrossOrigin("http://localhost:49290/")
+@CrossOrigin("http://localhost:64765")
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory,Integer>{
 
 }
