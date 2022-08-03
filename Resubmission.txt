@@ -1,0 +1,124 @@
+1)
+
+public class Card {
+	private int rank;
+	private int suit;
+	
+	public static final int ACE = 1;
+	public static final int TWO = 2;
+	public static final int THREE = 3;
+	public static final int FOUR = 4;
+	public static final int FIVE = 5;
+	public static final int SIX = 6;
+	public static final int SEVEN = 7;
+	public static final int EIGHT = 8;
+	public static final int NINE = 9;
+	public static final int TEN = 10;
+	public static final int JACK = 11;
+	public static final int QUEEN = 12;
+	public static final int KING = 13;
+	
+	private static final String ACE_STRING = "A";
+	private static final String JACK_STRING = "J";
+	private static final String QUEEN_STRING = "Q";
+	private static final String KING_STRING = "K";
+	
+	public static final int SPADES = 1;
+	public static final int HEARTS = 2;
+	public static final int DIAMONDS = 3;
+	public static final int CLUBS = 4;
+	
+	public Card (int rank, int suit) {
+		if ((rank >= ACE && rank <= KING) && (suit >= SPADES && suit <= CLUBS)) {
+			this.rank = rank;
+			this.suit = suit;
+		}
+		else {
+			System.out.println("Invalid rank and/or suit; Card initialized with zero values");
+		}
+	}
+
+	public int getSuit() {
+		return suit;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+}
+
+
+public class Player {
+private int betValue;
+private Card chosenCard;
+private String chosenOrientation;
+private int coins;
+
+public int getBetValue() {
+	return betValue;
+}
+public void setBetValue(int betValue) {
+	this.betValue = betValue;
+}
+public Card getChosenCard() {
+	return chosenCard;
+}
+public void setChosenCard(Card chosenCard) {
+	this.chosenCard = chosenCard;
+}
+public String getChosenOrientation() {
+	return chosenOrientation;
+}
+public void setChosenOrientation(String chosenOrientation) {
+	this.chosenOrientation = chosenOrientation;
+}
+public Player(int betValue, Card chosenCard, String chosenOrientation) {
+	super();
+	this.betValue = betValue;
+	this.chosenCard = chosenCard;
+	this.chosenOrientation = chosenOrientation;
+}
+
+public Player() {}
+public void bet(int betValue) {
+coins -= betValue;
+}
+public void winning(int belValue) {
+coins +=betValue;
+}
+
+
+
+
+
+
+
+
+
+
+}
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+public class Deck {
+private List<Card> deckOfCards;
+	
+	public Deck() {
+		
+	}
+
+	public List<Card> orderedList(Card c) {
+		List<Card> deckOfCards = new ArrayList<Card>();
+		for(int i=1;i<=c.getRank();i++) {
+			for(int j=1;j<=c.getSuit();j++) {
+				
+				deckOfCards.add(new Card(j,i));
+			}
+		}
+		return deckOfCards;
+	}
